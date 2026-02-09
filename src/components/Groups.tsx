@@ -23,7 +23,7 @@ export function Groups() {
         </h2>
         <button
           onClick={() => setShowCreateForm(true)}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors"
         >
           Create Group
         </button>
@@ -107,7 +107,7 @@ function MyGroups({ groups, onSelectGroup, selectedGroup }: {
           No groups yet
         </h3>
         <p className="text-gray-500 dark:text-gray-400">
-          Create or join groups to start connecting with others
+          
         </p>
       </div>
     );
@@ -119,12 +119,12 @@ function MyGroups({ groups, onSelectGroup, selectedGroup }: {
         <div
           key={group._id}
           className={`bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
-            selectedGroup === group._id ? "ring-2 ring-blue-500" : ""
+            selectedGroup === group._id ? "ring-2 ring-primary" : ""
           }`}
           onClick={() => onSelectGroup(group._id)}
         >
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
               {group.name[0].toUpperCase()}
             </div>
             <div className="flex-1">
@@ -184,7 +184,7 @@ function DiscoverGroups({ searchQuery, setSearchQuery, searchResults }: {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search public groups..."
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
         />
       </div>
 
@@ -204,7 +204,7 @@ function DiscoverGroups({ searchQuery, setSearchQuery, searchResults }: {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
                       {group.name[0].toUpperCase()}
                     </div>
                     <div>
@@ -222,7 +222,7 @@ function DiscoverGroups({ searchQuery, setSearchQuery, searchResults }: {
                   </div>
                   <button
                     onClick={() => handleJoinGroup(group._id)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors"
                   >
                     Join
                   </button>
@@ -275,7 +275,7 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-blue bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-md">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
           Create New Group
@@ -290,7 +290,7 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Enter group name"
               required
             />
@@ -304,7 +304,7 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none"
               placeholder="What's this group about?"
             />
           </div>
@@ -315,7 +315,7 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
               id="isPrivate"
               checked={isPrivate}
               onChange={(e) => setIsPrivate(e.target.checked)}
-              className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="rounded border-gray-300 text-primary focus:ring-primary"
             />
             <label htmlFor="isPrivate" className="text-sm text-gray-700 dark:text-gray-300">
               Make this group private
@@ -326,7 +326,7 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
             <button
               type="submit"
               disabled={!name.trim() || isCreating}
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isCreating ? "Creating..." : "Create Group"}
             </button>
