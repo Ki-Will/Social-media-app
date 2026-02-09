@@ -37,7 +37,7 @@ export function ProfileSetup() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
           <div className="text-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              Welcome to Dplted!
+              Welcome to <span className="font-unbounded">Dplted</span>!
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
               Let's set up your profile to get started
@@ -53,13 +53,13 @@ export function ProfileSetup() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Choose a username"
                 required
                 maxLength={30}
               />
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                This will be your display name on Dplted
+                This will be your display name on <span className="font-unbounded">Dplted</span>
               </p>
             </div>
 
@@ -71,7 +71,7 @@ export function ProfileSetup() {
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                 placeholder="Tell us a bit about yourself..."
                 maxLength={200}
               />
@@ -83,7 +83,7 @@ export function ProfileSetup() {
             <button
               type="submit"
               disabled={!username.trim() || isSubmitting}
-              className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full px-4 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isSubmitting ? "Creating Profile..." : "Create Profile"}
             </button>
