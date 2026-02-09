@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter var", ...fontFamily.sans],
+        sans: ["Saira", ...fontFamily.sans],
+        unbounded: ["Unbounded", ...fontFamily.sans],
       },
       borderRadius: {
         DEFAULT: "8px",
@@ -19,16 +20,16 @@ module.exports = {
       },
       colors: {
         primary: {
-          DEFAULT: "#4F46E5",
-          hover: "#4338CA",
+          DEFAULT: "#000000",
+          hover: "#333333",
         },
         secondary: {
-          DEFAULT: "#6B7280",
-          hover: "#4B5563",
+          DEFAULT: "#ffffff",
+          hover: "#f0f0f0",
         },
         accent: {
-          DEFAULT: "#8B5CF6",
-          hover: "#7C3AED",
+          DEFAULT: "#888888",
+          hover: "#aaaaaa",
         },
       },
       spacing: {
