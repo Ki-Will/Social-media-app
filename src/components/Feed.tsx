@@ -57,7 +57,7 @@ export function Feed() {
       {!posts.isDone && (
         <button
           onClick={loadMore}
-          className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="w-full py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors"
         >
           Load More
         </button>
