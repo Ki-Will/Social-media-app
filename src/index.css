@@ -12,24 +12,9 @@
 }
 
 body {
-  font-family:
-    "Inter Variable",
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    "Noto Sans",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
-  color: var(--color-dark);
-  background: var(--color-light);
+  font-family: "Saira", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: var(--color-light);
+  background: var(--color-dark);
 }
 
 /* only use this to update the style of the auth input fields. use a different class for all other input fields */
