@@ -222,7 +222,7 @@ export function Profile() {
                   type="button"
                   onClick={() => setShowImageModal(true)}
                   disabled={isUploading}
-                  className="absolute -bottom-1 -right-1 w-8 h-8 bg-blue text-white   rounded-full flex items-center justify-center hover:bg-black/80 hover:dark:bg-white/80 transition-colors disabled:opacity-50"
+                  className="absolute -bottom-1 -right-1 w-8 h-8 bg-primary text-white   rounded-full flex items-center justify-center hover:bg-black/80 hover:dark:bg-white/80 transition-colors disabled:opacity-50"
                 >
                   {isUploading ? "..." : <CameraIcon />}
                 </button>
