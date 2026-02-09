@@ -108,7 +108,7 @@ export function Notifications() {
         {notifications.some(n => !n.isRead) && (
           <button
             onClick={handleMarkAllAsRead}
-            className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+            className="text-sm text-primary hover:text-primary-hover"
           >
             Mark all as read
           </button>
@@ -131,7 +131,7 @@ export function Notifications() {
             <div
               key={notification._id}
               className={`bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
-                !notification.isRead ? "ring-2 ring-blue-500 ring-opacity-20" : ""
+                !notification.isRead ? "ring-2 ring-primary" : ""
               }`}
               onClick={() => !notification.isRead && handleMarkAsRead(notification._id)}
             >
@@ -141,7 +141,7 @@ export function Notifications() {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-semibold">
                       {notification.fromUser?.profile?.username?.[0]?.toUpperCase() || "U"}
                     </div>
                     <div className="flex-1">
@@ -153,7 +153,7 @@ export function Notifications() {
                       </p>
                     </div>
                     {!notification.isRead && (
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
                     )}
                   </div>
                 </div>
