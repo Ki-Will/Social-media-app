@@ -105,7 +105,7 @@ export function CreatePost() {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           placeholder="What's on your mind?"
-          className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
           rows={3}
         />
 
@@ -134,7 +134,7 @@ export function CreatePost() {
 
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-2">
-            <label className="cursor-pointer flex items-center gap-2 px-3 py-1 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors">
+            <label className="cursor-pointer flex items-center gap-2 px-3 py-1 text-primary hover:bg-primary/10 rounded-lg transition-colors">
               <span><CameraIcon className="w-7 h-7" /></span>
               <span className="text-sm">Photo/Video</span>
               <input
@@ -149,7 +149,7 @@ export function CreatePost() {
           <button
             type="submit"
             disabled={(!content.trim() && !selectedFile) || isUploading}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isUploading ? "Posting..." : "Post"}
           </button>
