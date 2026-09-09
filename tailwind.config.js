@@ -1,55 +1,51 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: "jit",
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  darkMode: "class",
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
         sans: ["Saira", ...fontFamily.sans],
         unbounded: ["Unbounded", ...fontFamily.sans],
       },
-      borderRadius: {
-        DEFAULT: "8px",
-        secondary: "4px",
-        container: "12px",
-      },
-      boxShadow: {
-        DEFAULT: "0 1px 4px rgba(0, 0, 0, 0.1)",
-        hover: "0 2px 8px rgba(0, 0, 0, 0.12)",
-      },
       colors: {
+        background: "var(--background)",
+        surface: {
+          DEFAULT: "var(--surface)",
+          hover: "var(--surface-hover)",
+          elevated: "var(--surface-elevated)",
+        },
+        border: "var(--border)",
+        divider: "var(--divider)",
+        text: {
+          primary: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
+          muted: "var(--text-muted)",
+        },
+        brand: {
+          DEFAULT: "var(--brand-primary)",
+          hover: "var(--brand-hover)",
+        },
         primary: {
-          DEFAULT: "#000000",
-          hover: "#333333",
+          DEFAULT: "var(--brand-primary)",
+          hover: "var(--brand-hover)",
         },
         secondary: {
-          DEFAULT: "#ffffff",
-          hover: "#f0f0f0",
-        },
-        accent: {
-          DEFAULT: "#888888",
-          hover: "#aaaaaa",
+          DEFAULT: "var(--surface)",
+          hover: "var(--surface-hover)",
         },
       },
-      spacing: {
-        "form-field": "16px",
-        section: "32px",
+      borderRadius: {
+        sm: "6px",
+        DEFAULT: "10px",
+        md: "10px",
+        lg: "14px",
+        xl: "18px",
+        "2xl": "24px",
+        full: "9999px",
       },
-      keyframes: {
-        'modal-in': {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
-        },
-      },
-      animation: {
-        'modal-in': 'modal-in 0.3s ease-out forwards',
-      },
-    },
-  },
-  variants: {
-    extend: {
-      boxShadow: ["hover", "active"],
     },
   },
 };

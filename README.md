@@ -1,93 +1,138 @@
-# Complete Social Media App
-  
-This is a project built with [Chef](https://chef.convex.dev) using [Convex](https://convex.dev) as its backend.
-  
-This project is connected to the Convex deployment named [`dapper-lark-926`](https://dashboard.convex.dev/d/dapper-lark-926).
-  
-## Project structure
-  
-The frontend code is in the `app` directory and is built with [Vite](https://vitejs.dev/).
-  
-The backend code is in the `convex` directory.
-  
-`npm run dev` will start the frontend and backend servers.
+# DPLTED — Developer Community & Network Platform
 
-## App authentication
+DPLTED is a modern, production-grade social platform and community network tailored for software engineers, creators, and developers. Built with **React**, **TypeScript**, **Tailwind CSS**, **Lucide Icons**, and powered by **Convex** for real-time backend state and database reactivity.
 
-Chef apps use [Convex Auth](https://auth.convex.dev/) with Anonymous auth for easy sign in. You may wish to change this before deploying your app.
+---
 
-## Developing and deploying your app
+## Key Features
 
-Check out the [Convex docs](https://docs.convex.dev/) for more information on how to develop with Convex.
-* If you're new to Convex, the [Overview](https://docs.convex.dev/understanding/) is a good place to start
-* Check out the [Hosting and Deployment](https://docs.convex.dev/production/) docs for how to deploy your app
-* Read the [Best Practices](https://docs.convex.dev/understanding/best-practices/) guide for tips on how to improve you app further
+- **Activity Feed & Media Sharing**: Share updates, code snippets, photos, videos, and audio clips. Engage through likes, threaded comments, and real-time pagination.
+- **Direct Messaging**: Connect privately with fellow developers through real-time peer-to-peer chat threads with contact search and unread indicators.
+- **Communities & Groups**: Join or create public and private developer groups with dedicated topic chatrooms and community discovery.
+- **Interactive Notifications**: Real-time notifications for likes, comments, direct messages, and group invitations with instant mark-as-read actions.
+- **Developer Profile Management**: Customize user profiles with custom avatars, cover banners, tech stack bios, and online status indicators.
+- **Portfolio Showcase View**: Built-in interactive portfolio view highlighting selected projects, technical skill domains, and endorsements.
+- **Light & Dark Theme Engine**: Built-in design token system supporting smooth switching between dark and light themes.
 
-## HTTP API
+---
 
-User-defined http routes are defined in the `convex/router.ts` file. We split these routes into a separate file from `convex/http.ts` to allow us to prevent the LLM from modifying the authentication routes.
+## Tech Stack & Architecture
 
-## Backend API (Convex)
+### Frontend Architecture
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v3](https://tailwindcss.com/) with CSS Variable design tokens
+- **Component System**: Modular UI Primitive Architecture (`src/components/ui/`)
+- **Iconography**: [Lucide React Icons](https://lucide.dev/) (no emojis)
+- **Notifications & Toasts**: [Sonner](https://sonner.emilkowal.ski/)
 
-All backend functions live under the `convex/` directory and are invoked from the client via the generated API `import { api } from "../convex/_generated/api"`.
+### Backend Architecture
+- **Real-Time Database & Auth**: [Convex](https://convex.dev/) + `@convex-dev/auth`
+- **File & Media Storage**: Convex File Storage API
+- **Deployment & Hosting**: [Render](https://render.com/)
 
-### Auth
+---
 
-- `api.auth.signIn` (action)
-  - Params via `params` object depending on provider.
-  - Password provider flows:
-    - Sign up: `{ provider: "password", params: { flow: "signUp", email, password, name } }`
-    - Sign in: `{ provider: "password", params: { flow: "signIn", email, password } }`
-    - Request password reset: `{ provider: "password", params: { flow: "reset", email } }`
-    - Reset verification: `{ provider: "password", params: { flow: "reset-verification", email, code, newPassword } }`
+## Global Design System
 
-- `api.auth.signOut` (action)
+The application relies on a tokenized design system defined in `tailwind.config.js` and `src/index.css`:
 
-- `api.auth.isAuthenticated` (query) → `boolean`
+```text
+Design Tokens (Colors, Radius, Shadows, CSS Variables)
+    ↓
+Primitive Components (Button, Input, Textarea, Badge, Avatar, Spinner, Skeleton, Card, Modal, EmptyState)
+    ↓
+Feature Components (Feed, CreatePost, Messages, Groups, Notifications, Profile)
+    ↓
+Application Shell (Top Navbar, Responsive Sidebar, Mobile Bottom Bar)
+```
 
-- `api.auth.requestPasswordReset` (action)
-  - Args: `{ email: string }`
-  - Sends a verification email with code/link (uses Resend if configured).
+### UI Primitives Summary (`src/components/ui/`)
+- **`Button`**: Supports `primary`, `secondary`, `outline`, `ghost`, `subtle`, and `danger` variants with loading spinners and icon slots.
+- **`Input` & `Textarea`**: Standardized controls with active focus ring highlights, left/right icon support, and inline validation states.
+- **`Card`**: Surface container component with elevated, outline, and hover-interactive variants.
+- **`Modal`**: Accessible dialog layer with backdrop blur, smooth exit animations, and keyboard `Escape` closing.
+- **`Avatar`**: Fallback user initials or custom profile images with optional online status badges.
+- **`Badge`**: Status indicators for member counts, group privacy, and notification tags.
+- **`EmptyState`**: Meaningful zero-data states with contextual icons and actionable guidance.
 
-- `api.auth.resetPassword` (action)
-  - Args: `{ email: string, code: string, newPassword: string }`
-  - Verifies the code and updates the account password.
+---
 
-Environment variables for reset emails:
-- `RESEND_API_KEY`: API key for Resend. If omitted, codes are logged to server console.
-- `FROM_EMAIL`: From address, e.g. `Auth <no-reply@yourdomain.com>`.
+## Directory Structure
 
-### Users (`convex/users.ts`)
+```text
+src/
+├── components/
+│   ├── ui/                    # Reusable primitive UI components
+│   │   ├── Avatar.tsx
+│   │   ├── Badge.tsx
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── EmptyState.tsx
+│   │   ├── Input.tsx
+│   │   ├── Modal.tsx
+│   │   ├── Spinner.tsx
+│   │   ├── Textarea.tsx
+│   │   └── index.ts
+│   ├── CreatePost.tsx         # Media attachment & post publisher
+│   ├── CTASection.tsx         # Contact CTA view
+│   ├── Feed.tsx               # Activity feed & comment threads
+│   ├── Groups.tsx             # Public discovery & private group chats
+│   ├── HeroSection.tsx        # Portfolio hero section
+│   ├── Messages.tsx           # Dual-pane direct messaging
+│   ├── Notifications.tsx      # Activity notification center
+│   ├── Profile.tsx            # User profile editor & banner
+│   ├── ProfileSetup.tsx       # Onboarding profile setup
+│   ├── ProjectsSection.tsx    # Project showcase
+│   ├── SkillsSection.tsx      # Technical skill categorization
+│   └── TestimonialsSection.tsx # Endorsements section
+├── App.tsx                    # Main layout shell & routing state
+├── SignInForm.tsx             # Authentication form
+├── SignOutButton.tsx          # Sign-out control
+├── index.css                  # CSS Variables & theme tokens
+└── main.tsx                   # Application entry point
+convex/                        # Backend data models & mutations
+```
 
-- `api.users.loggedInUser` (query) → current user doc or `null`.
-- `api.users.getCurrentProfile` (query) → user with `profile` and `profilePictureUrl`.
-- `api.users.updateProfile` (mutation)
-  - Args: `{ username: string, bio?: string, profilePicture?: Id<_storage> }`
-- `api.users.updateOnlineStatus` (mutation)
-  - Args: `{ isOnline: boolean }`
-- `api.users.getUserByUsername` (query)
-  - Args: `{ username: string }`
-- `api.users.searchUsers` (query)
-  - Args: `{ query: string }` → returns up to 10 users.
-- `api.users.createUserProfile` (mutation)
-  - Args: `{ username: string, bio?: string }`
+---
 
-### Notifications (`convex/notifications.ts`)
+## Getting Started
 
-- `api.notifications.getNotifications` (query) → last 50, hydrated with related data.
-- `api.notifications.markNotificationAsRead` (mutation)
-  - Args: `{ notificationId: Id<"notifications"> }`
-- `api.notifications.getUnreadCount` (query) → number
-- `api.notifications.markAllAsRead` (mutation)
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) v18+
+- [npm](https://www.npmjs.com/)
 
-### Groups (`convex/groups.ts`)
+### 2. Installation
+Clone the repository and install dependencies:
 
-High-level operations for groups and group messages. See file for full args and return shapes.
+```bash
+npm install
+```
 
-### Posts (`convex/posts.ts`)
+### 3. Environment Configuration
+Ensure your `.env.local` file contains your Convex URL:
 
-Create, list, like posts and manage comments. See file for details.
+```env
+VITE_CONVEX_URL=https://your-convex-deployment.convex.cloud
+```
 
-### Messages (`convex/messages.ts`)
+### 4. Running Development Servers
+To start the frontend local server:
 
-Direct and group messaging operations, including listing conversations and sending messages. See file for details.
+```bash
+npm run dev:frontend
+```
+
+### 5. Type Checking & Production Build
+To run TypeScript validation and compile the production build:
+
+```bash
+./node_modules/.bin/tsc -p . --noEmit
+npx vite build
+```
+
+---
+
+## License
+
+This project is licensed under the MIT License.
